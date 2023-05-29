@@ -1,28 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Advice generator app</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Erivelton Silva">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+    <title>Frontend Mentor | Advice generator app</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./dist/images/favicon-32x32.png">
+
+    <!-- Feel free to remove these styles or customize in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./dist/css/main.min.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 </head>
+
 <body>
 
-  Advice #<!-- Advice ID goes here -->
+    <main id="app">
 
-  "<!-- Advice text goes here -->"
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+        <div class="card">
+
+            <section class="card__body" v-if="data">
+
+                <h1 class="card__title">
+                    Advice #{{ data.slip.id }}<i @click="copyText" class="fa-regular fa-copy card__icon"></i>
+                </h1>
+                <p class="card__text js-copiedText">
+                    “{{ data.slip.advice }}”
+                </p>
+
+            </section>
+
+            <img src="./dist/images/pattern-divider-desktop.svg" alt="">
+
+            <footer class="card__footer">
+                <button class="btn" @click="getAdvice">
+                    <img src="./dist/images/icon-dice.svg" alt="">
+                </button>
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <footer class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.instagram.com/erivelton.dsilva/">Erivelton Silva</a>.
+    </footer>
+
+
+
+    <!-- instância do Vue.js -->
+    <script>
+
+        const { createApp } = Vue;
+
+        const app = createApp({
+            data() {
+                return {
+                    data: null,
+                };
+            },
+            methods: {
+                async getAdvice() {
+
+                    const response = await fetch('https://api.adviceslip.com/advice');
+                    this.data = await response.json();
+                },
+
+                copyText() {
+                    const copiedText = document.querySelector('.js-copiedText');
+
+                    navigator.clipboard.writeText(copiedText.textContent);
+                    alert("Copied the text:\n" + copiedText.textContent);
+                },
+            },
+            mounted() {
+                this.getAdvice();
+            },
+        });
+
+        app.mount('#app');
+
+    </script>
+
 </body>
+
 </html>

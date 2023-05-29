@@ -1,0 +1,201 @@
+// --------------------
+/* #SETTINGS */
+// --------------------
+
+@charset 'utf-8';
+
+// imports
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+
+// fonts
+$sansserif-stack: ('Verdana', 'Open Sans', 'Helvetica', 'Arial', sans-serif);
+$serif-stack: ('Times New Roman', 'Georgia', serif);
+$font-manrope: ('Manrope', $sansserif-stack);
+
+// color names
+$color-DarkBlue: hsl(218, 23%, 16%);
+$color-DarkGrayishBlue: hsl(217, 19%, 24%);
+$color-GrayishBlue: hsl(217, 19%, 38%);
+$color-LightCyan: hsl(193, 38%, 86%);
+$color-NeonGreen: hsl(150, 100%, 66%);
+
+// colors
+$color-background: $color-DarkBlue;
+$color-title: $color-NeonGreen;
+$color-text: $color-LightCyan;
+$color-surface: $color-DarkGrayishBlue;
+$color-btn: $color-NeonGreen;
+
+// variables
+
+
+
+// --------------------
+/* *#TOOLS */
+// --------------------
+
+// *functions
+/// Função 'lighter()'
+/// @param {color} $color - a cor que será deixada mais clara.
+/// @param {number} $percent [80%] - a porcentagem de 100% até 0%, quanto menor mais claro.
+/// @return {color} returna uma cor mais clara.
+@function lighter($color, $percent: 80) {
+    @return mix($color, #fff, $percent);
+}
+
+/// Função 'darker()'
+/// @param {color} $color - a cor que será deixada mais escura.
+/// @param {number} $percent [80%] - a porcentagem de 100% até 0%, quanto menor mais escuro.
+/// @return {color} returna uma cor mais escura.
+@function darker($color, $percent: 80) {
+    @return mix($color, #000, $percent);
+}
+
+// *mixins
+
+
+
+// --------------------
+/* #BASE */
+// --------------------
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+
+
+// --------------------
+/* #TYPOGRAPHY */
+// --------------------
+
+html {
+    font: normal 16px / 1.5 $font-manrope;
+}
+
+.card {
+    &__icon {
+        font-size: 1.4rem;
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+    &__title {
+        font-size: 0.9rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+    }
+    &__text {
+        font: {
+            size: 1.75rem;
+            weight: 800;
+        }
+    }
+}
+
+
+
+// --------------------
+/* #LAYOUT */
+// --------------------
+
+body {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+// --------------------
+/* #COMPONENTS */
+// --------------------
+
+.card {
+    width: 550px;
+    padding: 40px 40px 0px;
+    border-radius: 20px;
+    text-align: center;
+
+    &__text {
+        margin: 30px 0;
+    }
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 50%;
+    padding: 20px;
+    position: relative;
+    bottom: -30px;
+    cursor: pointer;
+}
+
+
+
+// --------------------
+/* #THEME */
+// --------------------
+
+body {
+    background-color: $color-background;
+}
+
+.card {
+    background-color: $color-surface;
+    &__title {
+        color: $color-title;
+    }
+    &__text {
+        color: $color-text;
+    }
+}
+
+.btn {
+    background-color: $color-btn;
+    border-style: none;
+
+    &:hover {
+        background-color: darker($color-btn, 90);
+    }
+    &:active {
+        background-color: lighter($color-btn, 95);
+        box-shadow: 0 0 16px 12px rgba($color-btn, 0.5);
+    }
+}
+
+
+
+// --------------------
+/* #ATTRIBUTION */
+// --------------------
+
+.attribution {
+    font-size: 0.8rem;
+    color: hsl(0, 0%, 100%);
+    text-align: center;
+}
+
+.attribution a {
+    color: lighter(hsl(228, 45%, 44%), 60);
+}
+
+
+
+// --------------------
+/* #UTILITIES */
+// --------------------
+
+
