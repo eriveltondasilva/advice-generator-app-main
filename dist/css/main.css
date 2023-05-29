@@ -20,8 +20,6 @@ html {
 
 .card__icon {
   font-size: 1.4rem;
-  padding: 8px 12px;
-  cursor: pointer;
 }
 .card__title {
   font-size: 0.9rem;
@@ -47,13 +45,18 @@ body {
 
 /* #COMPONENTS */
 .card {
-  width: 550px;
+  max-width: 550px;
+  margin: 0 16px;
   padding: 40px 40px 0px;
   border-radius: 20px;
   text-align: center;
 }
 .card__text {
-  margin: 30px 0;
+  margin-top: 30px;
+}
+.card__icon {
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
 .btn {
@@ -64,6 +67,17 @@ body {
   position: relative;
   bottom: -30px;
   cursor: pointer;
+}
+
+.card__img {
+  content: url("/dist/images/pattern-divider-desktop.svg");
+  margin-top: 50px;
+  max-width: 100%;
+}
+@media screen and (max-width: 375px) {
+  .card__img {
+    content: url("/dist/images/pattern-divider-mobile.svg");
+  }
 }
 
 /* #THEME */

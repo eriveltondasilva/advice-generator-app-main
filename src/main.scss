@@ -27,8 +27,7 @@ $color-surface: $color-DarkGrayishBlue;
 $color-btn: $color-NeonGreen;
 
 // variables
-
-
+$mobile: 375px;
 
 // --------------------
 /* *#TOOLS */
@@ -53,8 +52,6 @@ $color-btn: $color-NeonGreen;
 
 // *mixins
 
-
-
 // --------------------
 /* #BASE */
 // --------------------
@@ -70,8 +67,6 @@ body {
     height: 100vh;
 }
 
-
-
 // --------------------
 /* #TYPOGRAPHY */
 // --------------------
@@ -83,8 +78,6 @@ html {
 .card {
     &__icon {
         font-size: 1.4rem;
-        padding: 8px 12px;
-        cursor: pointer;
     }
     &__title {
         font-size: 0.9rem;
@@ -98,8 +91,6 @@ html {
         }
     }
 }
-
-
 
 // --------------------
 /* #LAYOUT */
@@ -116,20 +107,32 @@ body {
     justify-content: center;
 }
 
-
-
 // --------------------
 /* #COMPONENTS */
 // --------------------
 
 .card {
-    width: 550px;
+    max-width: 550px;
+    margin: 0 16px;
     padding: 40px 40px 0px;
     border-radius: 20px;
     text-align: center;
 
     &__text {
-        margin: 30px 0;
+        margin-top: 30px;
+    }
+    &__icon {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+}
+
+.card__img {
+    content: url('/dist/images/pattern-divider-desktop.svg');
+    max-width: 100%;
+
+    @media screen and (max-width: $mobile) {
+        content: url('/dist/images/pattern-divider-mobile.svg');
     }
 }
 
@@ -142,8 +145,6 @@ body {
     bottom: -30px;
     cursor: pointer;
 }
-
-
 
 // --------------------
 /* #THEME */
@@ -176,8 +177,6 @@ body {
     }
 }
 
-
-
 // --------------------
 /* #ATTRIBUTION */
 // --------------------
@@ -192,10 +191,6 @@ body {
     color: lighter(hsl(228, 45%, 44%), 60);
 }
 
-
-
 // --------------------
 /* #UTILITIES */
 // --------------------
-
-
