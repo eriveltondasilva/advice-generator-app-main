@@ -17,9 +17,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./dist/css/main.min.css">
 
+    <!-- Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </head>
+
 
 <body>
 
@@ -30,7 +32,7 @@
             <section class="card__body" v-if="data">
 
                 <h1 class="card__title">
-                    Advice #{{ data.slip.id }}<i @click="copyText" class="fa-regular fa-copy card__icon"></i>
+                    Advice #{{ data.slip.id }}<i @click="copyText" class="fa-regular fa-copy card__icon" title="button to copy advice"></i>
                 </h1>
                 <p class="card__text js-copiedText">
                     “{{ data.slip.advice }}”
