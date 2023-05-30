@@ -32,10 +32,11 @@
             <section class="card__body" v-if="data">
 
                 <h1 class="card__title">
-                    Advice #{{ data.slip.id }}<i @click="copyText" class="fa-regular fa-copy card__icon" title="button to copy advice"></i>
+                    Advice #{{ data.slip.id }}<i @click="copyText" class="fa-regular fa-copy card__icon"
+                        title="button to copy advice"></i>
                 </h1>
-                <p class="card__text js-copiedText">
-                    “{{ data.slip.advice }}”
+                <p class="card__text js-copiedText" ref="advice">
+                    “{{ this.advice }}”
                 </p>
 
             </section>
@@ -59,35 +60,59 @@
     </footer>
 
 
-
-    <!-- instância do Vue.js -->
+    <!-- Instância do Vue.js -->
     <script>
 
         const { createApp } = Vue;
 
+
         const app = createApp({
+
             data() {
                 return {
+
                     data: null,
+                    advice: null,
                 };
             },
+
+
             methods: {
+
+                /// função para consumir api e guardar as info em 'data'
                 async getAdvice() {
 
                     const response = await fetch('https://api.adviceslip.com/advice');
                     this.data = await response.json();
                 },
 
+                /// Função para copiar texto do advice e exibir mensagem na tela de confirmação
                 copyText() {
-                    const copiedText = document.querySelector('.js-copiedText');
 
-                    navigator.clipboard.writeText(copiedText.textContent);
-                    alert("Copied the text:\n" + copiedText.textContent);
+                    navigator.clipboard.writeText(this.advice);
+                    alert('Copied the text:\n' + this.advice);
                 },
-
-                
             },
+
+
+            watch: {
+
+                /// função para colocar letra por letra do advice na tela
+                data() {
+
+                    let text = this.data.slip.advice.split('');
+                    this.advice = '';
+
+                    text.forEach((letter, i) => {
+                        setTimeout(() => this.advice += letter, 70 * i)
+                    });
+                },
+            },
+
+
             mounted() {
+
+                /// função declarada para adicionar o primeiro advice quando o app é aberto
                 this.getAdvice();
             },
         });
