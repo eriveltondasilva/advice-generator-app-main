@@ -82,8 +82,9 @@
                 /// função para consumir api e guardar as info em 'data'
                 async getAdvice() {
 
-                    const response = await fetch('https://api.adviceslip.com/advice');
-                    this.data = await response.json();
+                    const res = await fetch('https://api.adviceslip.com/advice');
+                    const data = await res.json();
+                    this.data = data;
                 },
 
                 /// Função para copiar texto do advice e exibir mensagem na tela de confirmação
