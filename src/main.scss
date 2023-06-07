@@ -200,10 +200,10 @@ body {
     background-color: $color-btn;
     border-style    : none;
 
-    &:hover {
+    &:active {
         background-color: darker($color-btn, 90);
     }
-    &:active {
+    &:hover {
         background-color: lighter($color-btn, 95);
         box-shadow      : 0 0 16px 12px rgba($color-btn, 0.5);
     }
