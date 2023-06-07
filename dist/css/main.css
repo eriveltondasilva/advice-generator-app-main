@@ -100,10 +100,10 @@ body {
   background-color: hsl(150, 100%, 66%);
   border-style: none;
 }
-.btn:hover {
+.btn:active {
   background-color: #4ae697;
 }
-.btn:active {
+.btn:hover {
   background-color: #5bffac;
   box-shadow: 0 0 16px 12px rgba(82, 255, 168, 0.5);
 }
