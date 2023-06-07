@@ -201,7 +201,7 @@ body {
     border-style    : none;
 
     &:active {
-        background-color: darker($color-btn, 90);
+        background-color: darker($color-btn);
     }
     &:hover {
         background-color: lighter($color-btn, 95);
