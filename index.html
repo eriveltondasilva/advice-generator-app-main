@@ -17,41 +17,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./dist/css/main.min.css">
 
-    <!-- Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
 </head>
 
 
 <body>
 
-    <main id="app">
-
-        <div class="card">
-
-            <section class="card__body" v-if="data">
-
-                <h1 class="card__title">
-                    Advice #{{ data.slip.id }}<i @click="copyText" class="fa-regular fa-copy card__icon"
-                        title="button to copy advice"></i>
-                </h1>
-                <p class="card__text js-copiedText" ref="advice">
-                    “{{ this.advice }}”
-                </p>
-
-            </section>
-
-            <div class="card__img"></div>
-
-            <footer class="card__footer">
-                <button class="btn" @click="getAdvice" aria-label="buscar conselhos">
-                    <img src="./dist/images/icon-dice.svg" alt="">
-                </button>
-            </footer>
-
-        </div>
-
-    </main>
+    <main id="app"></main>
 
 
     <footer class="attribution">
@@ -61,65 +32,11 @@
 
 
     <!-- Instância do Vue.js -->
-    <script>
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        import MainJS from './src/main.js';
 
-        const { createApp } = Vue;
-
-
-        const app = createApp({
-
-            data() {
-                return {
-
-                    data: null,
-                    advice: null,
-                };
-            },
-
-
-            methods: {
-
-                /// função para consumir api e guardar as info em 'data'
-                async getAdvice() {
-
-                    const res = await fetch('https://api.adviceslip.com/advice');
-                    const data = await res.json();
-                    this.data = data;
-                },
-
-                /// Função para copiar texto do advice e exibir mensagem na tela de confirmação
-                copyText() {
-
-                    navigator.clipboard.writeText(this.advice);
-                    alert('Copied the text:\n' + this.advice);
-                },
-            },
-
-
-            watch: {
-
-                /// função para colocar letra por letra do advice na tela
-                data() {
-
-                    let text = this.data.slip.advice.split('');
-                    this.advice = '';
-
-                    text.forEach((letter, i) => {
-                        setTimeout(() => this.advice += letter, 70 * i)
-                    });
-                },
-            },
-
-
-            mounted() {
-
-                /// função declarada para adicionar o primeiro advice quando o app é aberto
-                this.getAdvice();
-            },
-        });
-
-        app.mount('#app');
-
+        createApp(MainJS).mount('#app');
     </script>
 
 </body>
