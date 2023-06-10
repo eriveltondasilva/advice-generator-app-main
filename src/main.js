@@ -46,9 +46,9 @@ export default {
       fetch(this.getURI())
 
         // converter os dados da API para o formato de json
-        .then((res) => res.json())
+        .then(res => res.json())
 
-        .then((data) => {
+        .then(data => {
           this.id = data.slip.id;
           this.text = data.slip.advice;
 
@@ -56,7 +56,7 @@ export default {
         })
 
         // Caso der erro
-        .catch((err) => {
+        .catch(err => {
           this.id = "#";
           this.advice = "ERROR: " + err.message + ".";
         });
