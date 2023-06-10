@@ -86,6 +86,7 @@ export default {
 
       // quantidade de caractere do 'advice' menos 1 para comparar com o índece do foreach abaixo e assim descobrir qual é o último item do array 'text' 
       const textLength = text.length - 1;
+      const effectTime = 70;
 
       //
       text.forEach((letter, i) => {
@@ -95,7 +96,7 @@ export default {
           // bloquear o clique e liberar no último item do array 'text'
           if (textLength === i) this.isBlock = false;
 
-        }, 60 * i);
+        }, effectTime * i);
       });
     },
 
