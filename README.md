@@ -18,9 +18,9 @@ This is a solution to the [Advice generator app challenge on Frontend Mentor](ht
 
 Users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Generate a new piece of advice by clicking the dice icon
+-   View the optimal layout for the app depending on their device's screen size
+-   See hover states for all interactive elements on the page
+-   Generate a new piece of advice by clicking the dice icon
 
 ### Screenshot
 
@@ -29,7 +29,7 @@ Users should be able to:
 ### Links
 
 -   Solution URL: [https://www.frontendmentor.io/solutions/advice-generator-app-main-using-vuejs-lq-c2AQfiy#comment-647432668cf70402ba372548](https://www.frontendmentor.io/solutions/advice-generator-app-main-using-vuejs-lq-c2AQfiy#comment-647432668cf70402ba372548)
--   Live Site URL: [https://github.com/eriveltondasilva/advice-generator-app-main](https://github.com/eriveltondasilva/advice-generator-app-main)
+-   Live Site URL: [https://advice-generator-app-main-eriveltonsilva.vercel.app](https://advice-generator-app-main-eriveltonsilva.vercel.app)
 
 ## My process
 
